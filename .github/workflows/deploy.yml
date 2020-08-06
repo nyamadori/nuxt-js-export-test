@@ -20,10 +20,4 @@ jobs:
       run: yarn build
 
     - name: Export static pages
-      run: yarn export
-
-    - name: Upload Exported page artifacts
-      uses: actions/upload-artifact@v1
-      with:
-        name: out
-        path: out
+      run: yarn generate
