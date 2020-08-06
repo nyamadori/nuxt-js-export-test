@@ -1,0 +1,29 @@
+name: export Nuxt.js app
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: yarn install
+
+    - name: Build static pages
+      run: yarn build
+
+    - name: Export static pages
+      run: yarn export
+
+    - name: Upload Exported page artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: out
+        path: out
